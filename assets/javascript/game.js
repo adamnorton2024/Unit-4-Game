@@ -8,18 +8,51 @@ $(document).ready(function (){
 
     var fighters = [];
 
+    var player = null;
+
     for (var i = 0; i < 4; i++) {
         var randomNumber = Math.floor(Math.random() * charArray.length);
         fighters.push(charArray[randomNumber]);
-        console.log(charArray[randomNumber]);
+        //console.log(charArray[randomNumber]);
         charArray.splice(randomNumber, 1);
         //console.log(fighters);
         $('#' + fighterIDs[i].name).text(fighters[i].name);
         $('#' + fighterIDs[i].src).attr("src", fighters[i].imgPath);
         $('#' + fighterIDs[i].hp).text(fighters[i].hp);
-        
+
 
     };
+
+    $(".card-fighter").on("click", function () {
+
+        if(player === null){
+            player = $(this);
+            $(this).attr('id', "player");
+            $("#area-player").append($(this));
+            console.log("Player is: " + player);
+            $("#area-opponents").append($(".card-deck"));
+            //for(var i = 0; i < 4; i++){
+              //  $('#' +)
+            //}
+        } else {
+            console.log("player is already chosen... so nothing happens.");
+        }
+        // If operator is chosen, we should be writing the secondNumber, otherwise, the firstNumber
+        // if (isOperatorChosen) {
+        //     secondNumber += $(this).val();
+        //     $("#second-number").text(secondNumber);
+
+        // }
+        // else {
+        //     firstNumber += $(this).val();
+        //     $("#first-number").text(firstNumber);
+        // }
+
+    });
+    
+    // function myGeeks() {
+    //     $("#parent").append($("#child"));
+    // }
 
     
 
