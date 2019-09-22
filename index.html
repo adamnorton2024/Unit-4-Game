@@ -17,57 +17,82 @@
 </head>
 <body>
 
-    <div class="background"></div>
-    <div class="container">
-        <!-- rest of layout code goes here -->
-        <div class="row">
-            <!-- Fighter Options Card -->
-            <div class="col-sm-12" id="area-choose-fighter" >
-                <div class="card-deck">
-                    <div class="card card-fighter text-white border" id="fighter1">
-                        <img class="card-img" id='img-fighter1' src="" alt="Card image">
-                        <div class="card-img-overlay d-flex flex-column ">
-                            <h5 class="card-title" id="name-fighter1"></h5>
-                            <p class="card-text mt-auto" id='hp-fighter1'></p>
+    <div class="background">
+        <div class="container">
+            <div class='row mt-3 mb-2'>
+                <div class='col-sm-12'>
+                    <img class='float-left' id='logo' src='./assets/images/logo_sw.png'>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Fighter Options Card -->
+                <div class="col-sm-12 area" id="area-choose-fighter" >
+                    <div class="card-deck">
+                        <div class="card col-sm-2 card-fighter text-white border" id="fighter1">
+                            <img class="card-img" id='img-fighter1' src="" alt="Card image">
+                            <div class="card-img-overlay d-flex flex-column ">
+                                <h5 class="card-title" id="name-fighter1"></h5>
+                                <p class="card-text mt-auto" id='hp-fighter1'></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card card-fighter text-white border"id="fighter2">
-                        <img class="card-img" id='img-fighter2' src="" alt="Card image">
-                        <div class="card-img-overlay d-flex flex-column ">
-                            <h5 class="card-title" id="name-fighter2"></h5>
-                            <p class="card-text mt-auto" id='hp-fighter2'></p>
+                        <div class="card col-sm-2 card-fighter text-white border"id="fighter2">
+                            <img class="card-img" id='img-fighter2' src="" alt="Card image">
+                            <div class="card-img-overlay d-flex flex-column ">
+                                <h5 class="card-title" id="name-fighter2"></h5>
+                                <p class="card-text mt-auto" id='hp-fighter2'></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card card-fighter text-white border" id="fighter3">
-                        <img class="card-img" id='img-fighter3' src="" alt="Card image">
-                        <div class="card-img-overlay d-flex flex-column">
-                            <h5 class="card-title" id="name-fighter3"></h5>
-                            <p class="card-text mt-auto" id='hp-fighter3'></p>
+                        <div class="card col-sm-2 card-fighter text-white border" id="fighter3">
+                            <img class="card-img" id='img-fighter3' src="" alt="Card image">
+                            <div class="card-img-overlay d-flex flex-column">
+                                <h5 class="card-title" id="name-fighter3"></h5>
+                                <p class="card-text mt-auto" id='hp-fighter3'></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card card-fighter text-white border" id="fighter4">
-                        <img class="card-img" id='img-fighter4' src="" alt="Card image">
-                        <div class="card-img-overlay d-flex flex-column">
-                            <h5 class="card-title" id="name-fighter4"></h5>
-                            <p class="card-text mt-auto" id='hp-fighter4'></p>
+                        <div class="card col-sm-2 card-fighter text-white border" id="fighter4">
+                            <img class="card-img" id='img-fighter4' src="" alt="Card image">
+                            <div class="card-img-overlay d-flex flex-column">
+                                <h5 class="card-title" id="name-fighter4"></h5>
+                                <p class="card-text mt-auto" id='hp-fighter4'></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12" id="area-player">
-
+            <div class="row">
+                <div class="col-sm-4 area">
+                    <p class='text-white mr-auto' id="player-character-text">Player Character</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12" id="area-opponents">
-        
+            <div class="row">
+                <div class="col-sm-12 area" id="area-player">
+                    <button type="button" class="btn btn-light" id="btn-attack">Attack</button>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-sm-4 area">
+                    <p class='text-white' id="enemy-character-text">Enemy Character</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 area" id="area-enemy">
+            
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <p class='text-white' id="enemy-remaining-text">Enemies Remaining</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 area" id="area-opponents">
+            
+                </div>
+            </div>
+
+
         </div>
-
-
-    </div>
+    </div>    
 
 
     <!-- jQuery that goes with bootstrap -->

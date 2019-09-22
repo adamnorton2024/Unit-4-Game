@@ -15,9 +15,16 @@
     height: 100%;
 }
 
+#logo{
+    width: 20rem;
+}
+
 .card-fighter{
     background-color: rgba(255,255,255,0.25);
     text-shadow: 1px 1px 2px #000;
     border-radius:6px;
     text-transform: capitalize;
 }
+
+
+

@@ -9,6 +9,7 @@ $(document).ready(function (){
     var fighters = [];
 
     var player = null;
+    var enemy = null;
 
     for (var i = 0; i < 4; i++) {
         var randomNumber = Math.floor(Math.random() * charArray.length);
@@ -19,8 +20,6 @@ $(document).ready(function (){
         $('#' + fighterIDs[i].name).text(fighters[i].name);
         $('#' + fighterIDs[i].src).attr("src", fighters[i].imgPath);
         $('#' + fighterIDs[i].hp).text(fighters[i].hp);
-
-
     };
 
     $(".card-fighter").on("click", function () {
@@ -31,13 +30,35 @@ $(document).ready(function (){
             $("#area-player").append($(this));
             console.log("Player is: " + player);
             $("#area-opponents").append($(".card-deck"));
-            //for(var i = 0; i < 4; i++){
-              //  $('#' +)
-            //}
+        } else if ($(this) !== player && enemy === null) {
+            enemy = $(this);
+            $(this).attr('id', "enemy");
+            console.log("Enemy is: " + enemy);
+            $("#area-enemy").append($(this));
         } else {
-            console.log("player is already chosen... so nothing happens.");
+            console.log("Nothing Happens ");            
         }
-        // If operator is chosen, we should be writing the secondNumber, otherwise, the firstNumber
+    });
+
+    $("#btn-attack").on("click", function () {
+
+        console.log("Attack!");
+        $('.card-deck').append($("#enemy"));
+        $('#enemy').find($(".card-title").text("DEAD") );
+        enemy = null;
+    });
+
+
+
+
+
+    
+    // function myGeeks() {
+    //     $("#parent").append($("#child"));
+    // }
+
+    
+// If operator is chosen, we should be writing the secondNumber, otherwise, the firstNumber
         // if (isOperatorChosen) {
         //     secondNumber += $(this).val();
         //     $("#second-number").text(secondNumber);
@@ -47,15 +68,6 @@ $(document).ready(function (){
         //     firstNumber += $(this).val();
         //     $("#first-number").text(firstNumber);
         // }
-
-    });
-    
-    // function myGeeks() {
-    //     $("#parent").append($("#child"));
-    // }
-
-    
-
 
 
 
