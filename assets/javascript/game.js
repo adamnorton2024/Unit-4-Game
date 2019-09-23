@@ -1,12 +1,13 @@
 $(document).ready(function (){
 
     // Array of all of my character objects
-    var charArray = [{ name: "chewbacca", hp: 200, ap: 100, cap: 100, imgPath: './assets/images/h_chewbacca.png', val: "chewbacca" }, { name: "leia", hp: 90, ap: 100, cap: 100, imgPath: './assets/images/h_leia.png', val: "leia" }, { name: "luke", hp: 120, ap: 100, cap: 100, imgPath: './assets/images/h_luke.png', val: "luke" }, { name: "obi-wan", hp: 90, ap: 100, cap: 100, imgPath: './assets/images/h_obiwan.png', val: "obi-wan" }, { name: "wicket", hp: 80, ap: 100, cap: 100, imgPath: './assets/images/h_wicket.png', val: "wicket" }, { name: "yoda", hp: 100, ap: 100, cap: 100, imgPath: './assets/images/h_yoda.png', val: "yoda" }, { name: "4-lom", hp: 105, ap: 100, cap: 100, imgPath: './assets/images/e_4_lom.png', val: "4-lom" }, { name: "boba-fett", hp: 115, ap: 100, cap: 100, imgPath: './assets/images/e_boba_fett.png', val: "boba-fett" }, { name: "darth-vader", hp: 200, ap: 100, cap: 100, imgPath: './assets/images/e_darth_vader.png', val: "darth-vader" }, { name: "emperor", hp: 180, ap: 100, cap: 100, imgPath: './assets/images/e_emperor.png', val: "emperor" }, { name: "ig-88", hp: 100, ap: 100, cap: 100, imgPath: './assets/images/e_ig_88.png', val: "ig-88" }, { name: "jabba", hp: 250, ap: 100, cap: 100, imgPath: './assets/images/e_jabba.png', val: "jabba" }, { name: "greedo", hp: 85, ap: 100, cap: 100, imgPath: './assets/images/e_greedo.png', val: "greedo" }, { name: "tuskan-raider", hp: 100, ap: 100, cap: 100, imgPath: './assets/images/e_tuskan_raider.png', val: "tuskan-raider" }, { name: "storm-trooper", hp: 100, ap: 100, cap: 100, imgPath: './assets/images/e_storm_trooper.png', val: "storm-trooper" }];
+    var charArray = [{ name: "Chewbacca", hp: 200, ap: 15, cap: 26, imgPath: './assets/images/h_chewbacca.png', id: "chewbacca" }, { name: "Leia", hp: 90, ap: 25, cap: 18, imgPath: './assets/images/h_leia.png', id: "leia" }, { name: "Luke", hp: 130, ap: 25, cap: 25, imgPath: './assets/images/h_luke.png', id: "luke" }, { name: "Obi-Wan", hp: 90, ap: 25, cap: 23, imgPath: './assets/images/h_obiwan.png', id: "obi-wan" }, { name: "Wicket", hp: 110, ap: 20, cap: 18, imgPath: './assets/images/h_wicket.png', id: "wicket" }, { name: "Yoda", hp: 90, ap: 30, cap: 30, imgPath: './assets/images/h_yoda.png', id: "yoda" }, { name: "4-Lom", hp: 100, ap: 18, cap: 18, imgPath: './assets/images/e_4_lom.png', id: "4-lom" }, { name: "Boba-Fett", hp: 115, ap: 24, cap: 22, imgPath: './assets/images/e_boba_fett.png', id: "boba-fett" }, { name: "Darth Vader", hp: 135, ap: 20, cap: 30, imgPath: './assets/images/e_darth_vader.png', id: "darth-vader" }, { name: "Emperor", hp: 130, ap: 25, cap: 20, imgPath: './assets/images/e_emperor.png', id: "emperor" }, { name: "IG-88", hp: 100, ap: 18, cap: 16, imgPath: './assets/images/e_ig_88.png', id: "ig-88" }, { name: "Jabba", hp: 150, ap: 12, cap: 15, imgPath: './assets/images/e_jabba.png', id: "jabba" }, { name: "Greedo", hp: 85, ap: 10, cap: 10, imgPath: './assets/images/e_greedo.png', id: "greedo" }, { name: "Tuskan Raider", hp: 100, ap: 18, cap: 18, imgPath: './assets/images/e_tuskan_raider.png', id: "tuskan-raider" }, { name: "Storm Trooper", hp: 80, ap: 12, cap: 18, imgPath: './assets/images/e_storm_trooper.png', id: "storm-trooper" }];
 
     var fighters = [];
     var nonPlayers = [];
 
     var player = null;
+    var playerName = null;
     var playerAP = 0;
     var playerHP = 0;
     var playerBaseAP = 0;
@@ -28,16 +29,18 @@ $(document).ready(function (){
     for (var i = 0; i < 4; i++) {
         var randomNumber = Math.floor(Math.random() * charArray.length);
         fighters.push(charArray[randomNumber]);
-        $('#hp-' + fighters[i].name).text(fighters[i].hp);
+        $('#hp-' + fighters[i].id).text(fighters[i].hp); //name
         charArray.splice(randomNumber, 1);
     };
 
     // the characters not chosen are hidden away
     for (let i = 0; i < charArray.length; i++) {
         nonPlayers.push(charArray[i]);
-        var hide = charArray[i].name;
-        $('#' + charArray[i].name).detach();        
+        //var hide = charArray[i].name;
+        $('#' + charArray[i].id).detach();        
     };
+
+    console.log(fighters);
 
     // click a card to choose your player, and it assigns needed player variables. 
     $(".card-fighter").on("click", function () {
@@ -46,35 +49,42 @@ $(document).ready(function (){
             
             player = $(this).attr('id');
             $("#area-player").prepend($(this));
-            console.log("Player is: " + player);
+            //console.log("Player is: " + player);
             for (let i = 0; i < fighters.length; i++) {
-                if(fighters[i].name === player){
+                if(fighters[i].id === player){          //name
                     playerIndex = i;
+                    playerName = fighters[playerIndex].name;
+                    console.log("playerName variable is set to " + playerName);
                     playerHP = fighters[playerIndex].hp;
                     playerAP = fighters[playerIndex].ap;
                     playerBaseAP = playerAP;
                     break;
                 };
+
             }; 
             // the non-player characters are moved to enemies area.
             $("#area-opponents").append($(".card-deck"));
+            $('#player-character-text').text('Player');
+            $('#enemy-character-text').text('Choose Your Enemy');
             // now choose your enemy
         } else if ($(this) !== player && enemy === null) {
             // needed enemy variables are assigned
             enemy = $(this).attr('id');
-            console.log("Enemy is: " + "'" + enemy + "'");
             if(defeated.indexOf(enemy) === -1){
                 console.log("Enemy is: " + enemy);
                 $("#area-enemy").append($(this));
                 for (let i = 0; i < fighters.length; i++) {
-                    if (fighters[i].name === enemy) {
+                    if (fighters[i].id === enemy) {    //name
                         enemyIndex = i;
+                        enemyName = fighters[enemyIndex].name;
                         enemyHP = fighters[enemyIndex].hp;
                         enemyAP = fighters[enemyIndex].ap;
                         enemyCAP = fighters[enemyIndex].cap;
                         break;
                     };
                 };
+            $('#btn-attack').css("visibility", "visible");
+            $('#enemy-character-text').text('Enemy Character');
             } else {
                 console.log("Enemy is defeated.  Choose another.");
                 enemy = null;
@@ -89,22 +99,30 @@ $(document).ready(function (){
 
         // update stats based on attacking
         enemyHP = enemyHP - playerAP;
-        playerHP = playerHP - enemyCAP;
-        playerAP = playerAP + playerBaseAP;
-        $('#hp-' + fighters[playerIndex].name).text(playerHP);
-        $('#hp-' + fighters[enemyIndex].name).text(enemyHP);
+        console.log(player);
+        $('#text-player-stats').text(`${playerName} hits ${enemyName} for ${playerAP} damage.`);
 
-        if(enemyHP <= 0){
+        if (enemyHP <= 0 && playerHP > 0) {
             console.log("Enemy Loses!");
+            $('#hp-' + fighters[enemyIndex].id).text("0");
             //when defeated move back to enemies area, label as "DEFEATED, and cannot be selected again."
             $('.card-deck').append($('#' + enemy));
             $('#' + enemy).find($("#name-" + enemy).text("DEFEATED"));
             $('#' + enemy).find($("#name-" + enemy).css("color", "red"));
             defeated.push((enemy));
             enemy = null;
-        };
-
-        if(playerHP <= 0){
+            if(defeated.length < 3){
+                $('#enemy-character-text').text('Choose Your Enemy');
+            } else {
+                $('#enemy-character-text').text('You Win!');
+            }
+            
+        } else if (enemyHP > 0 && playerHP > 0) {
+            playerHP = playerHP - enemyCAP;
+            playerAP = playerAP + playerBaseAP;
+            $('#hp-' + fighters[enemyIndex].name).text(enemyHP);
+            $('#hp-' + fighters[playerIndex].name).text(playerHP);
+        } else if (playerHP <= 0) {
             console.log("Player Loses!");
         };
     });

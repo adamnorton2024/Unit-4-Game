@@ -24,9 +24,16 @@
                     <img class='float-left' id='logo' src='./assets/images/logo_sw.png'>
                 </div>
             </div>
-            <div class="row container-fluid">
-                <!-- Fighter Options Card -->
-                <!-- <div class="col-sm-12 area" id="area-choose-fighter" >
+            
+            <div class="row">
+                <div class="col-sm-4 area">
+                    <p class='text-white mr-auto text-labels' id="player-character-text">Choose Your Fighter</p>
+                </div>
+            </div>
+            <div class="row spacer"></div>
+            
+                <div class="col-sm-12 area" id="area-player">
+                    
                     <div class="card-deck">
                         <div class="card col-sm-2 card-fighter text-white border" id="chewbacca" val="chewbacca">
                             <img class="card-img" id='img-chewbacca' src='./assets/images/h_chewbacca.png' alt="Card image">
@@ -35,7 +42,7 @@
                                 <p class="card-text mt-auto" id='hp-chewbacca'></p>
                             </div>
                         </div>
-                        <div class="card col-sm-2 card-fighter text-white border"id="leia" val="leia">
+                        <div class="card col-sm-2 card-fighter text-white border" id="leia" val="leia">
                             <img class="card-img" id='img-leia' src='./assets/images/h_leia.png' alt="Card image">
                             <div class="card-img-overlay d-flex flex-column ">
                                 <h5 class="card-title" id="name-leia">Leia</h5>
@@ -133,144 +140,33 @@
                                 <p class="card-text mt-auto" id='hp-storm-trooper'></p>
                             </div>
                         </div>
-                    </div>
-                </div> -->
-            </div>
-            <div class="row">
-                <div class="col-sm-4 area">
-                    <p class='text-white mr-auto text-labels' id="player-character-text">Player</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 area" id="area-player">
-                    <div class="col-sm-12 area" id="area-choose-fighter">
-                        <div class="card-deck">
-                            <div class="card col-sm-2 card-fighter text-white border" id="chewbacca" val="chewbacca">
-                                <img class="card-img" id='img-chewbacca' src='./assets/images/h_chewbacca.png' alt="Card image">
-                                <div class="card-img-overlay d-flex flex-column ">
-                                    <h5 class="card-title" id="name-chewbacca">Chewbacca</h5>
-                                    <p class="card-text mt-auto" id='hp-chewbacca'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="leia" val="leia">
-                                <img class="card-img" id='img-leia' src='./assets/images/h_leia.png' alt="Card image">
-                                <div class="card-img-overlay d-flex flex-column ">
-                                    <h5 class="card-title" id="name-leia">Leia</h5>
-                                    <p class="card-text mt-auto" id='hp-leia'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="luke" val="luke">
-                                <img class="card-img" id='img-luke' src='./assets/images/h_luke.png' alt="Card image">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-luke">Luke</h5>
-                                    <p class="card-text mt-auto" id='hp-luke'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="obi-wan" val="obi-wan">
-                                <img class="card-img" id='img-obi-wan' src='./assets/images/h_obiwan.png' alt="Card image">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-obi-wan">Obi-Wan</h5>
-                                    <p class="card-text mt-auto" id='hp-obi-wan'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="wicket" val="wicket">
-                                <img class="card-img" id='img-wicket' src='./assets/images/h_wicket.png' alt="wicket">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-wicket">Wicket</h5>
-                                    <p class="card-text mt-auto" id='hp-wicket'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="yoda" val="yoda">
-                                <img class="card-img" id='img-yoda' src='./assets/images/h_yoda.png' alt="yoda">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-yoda">Yoda</h5>
-                                    <p class="card-text mt-auto" id='hp-yoda'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="4-lom" val="4-lom">
-                                <img class="card-img" id='img-4-lom' src='./assets/images/e_4_lom.png' alt="4-Lom">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-4-lom">4-Lom</h5>
-                                    <p class="card-text mt-auto" id='hp-4-lom'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="emperor" val="emperor">
-                                <img class="card-img" id='img-emperor' src='./assets/images/e_emperor.png' alt="emperor">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-emperor">Emperor</h5>
-                                    <p class="card-text mt-auto" id='hp-emperor'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="boba-fett" val="boba-fett">
-                                <img class="card-img" id='img-boba-fett' src='./assets/images/e_boba_fett.png' alt="boba-fett">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-boba-fett">Boba Fett</h5>
-                                    <p class="card-text mt-auto" id='hp-boba-fett'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="darth-vader" val="darth-vader">
-                                <img class="card-img" id='img-darth-vader' src='./assets/images/e_darth_vader.png' alt="Darth Vader">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-darth-vader">Darth Vader</h5>
-                                    <p class="card-text mt-auto" id='hp-darth-vader'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="ig-88" val="ig-88">
-                                <img class="card-img" id='img-ig-88' src='./assets/images/e_ig_88.png' alt="IG-88">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-ig-88">IG-88</h5>
-                                    <p class="card-text mt-auto" id='hp-ig-88'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="jabba" val="jabba">
-                                <img class="card-img" id='img-jabba' src='./assets/images/e_jabba.png' alt="jabba">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-jabba">Jabba</h5>
-                                    <p class="card-text mt-auto" id='hp-jabba'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="greedo" val="greedo">
-                                <img class="card-img" id='img-greedo' src='./assets/images/e_greedo.png' alt="greedo">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-greedo">Greedo</h5>
-                                    <p class="card-text mt-auto" id='hp-greedo'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="tuskan-raider" val="tuskan-raider">
-                                <img class="card-img" id='img-tuskan-raider' src='./assets/images/e_tuskan_raider.png' alt="tuskan raider">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-tuskan-raider">Tuskan Raider</h5>
-                                    <p class="card-text mt-auto" id='hp-tuskan-raider'></p>
-                                </div>
-                            </div>
-                            <div class="card col-sm-2 card-fighter text-white border" id="storm-trooper" val="storm-trooper">
-                                <img class="card-img" id='img-storm-trooper' src='./assets/images/e_storm_trooper.png' alt="storm trooper">
-                                <div class="card-img-overlay d-flex flex-column">
-                                    <h5 class="card-title" id="name-storm-trooper">Storm Trooper</h5>
-                                    <p class="card-text mt-auto" id='hp-storm-trooper'></p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
 
-            </div>
-            <div class='row'>
-                <button type="button" class="btn btn-light col-sm-2" id="btn-attack">Attack</button>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 area">
-                    <p class='text-white text-labels' id="enemy-character-text">Enemy</p>
+            <div class="row spacer">
+                <div class="col-sm-12 text-white" >
+                    <p id="text-player-stats"></p>
                 </div>
             </div>
+            <div class='row'>
+                <button type="button" class="btn btn-light col-sm-2 ml-3" id="btn-attack">Attack</button>
+            </div>
+            <div class="row spacer">
+                <div class="col-sm-12 text-white text-stats">
+                    <p id="text-player-stats"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 area text-stats">
+                    <p class='text-white text-labels ' id="enemy-character-text"></p>
+                </div>
+            </div>
+            <div class="row spacer"></div>
             <div class="row">
                 <div class="col-sm-12 area" id="area-enemy"></div>
             </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <p class='text-white text-labels' id="enemy-remaining-text">Enemies Remaining</p>
-                </div>
-            </div>
+            <div class="row spacer"></div>
             <div class="row">
                 <div class="col-sm-12 area" id="area-opponents"></div>
             </div>
