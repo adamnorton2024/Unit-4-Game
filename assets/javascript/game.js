@@ -1,7 +1,7 @@
 $(document).ready(function (){
 
     // Array of all of my character objects
-    var charArray = [{ name: "Chewbacca", hp: 200, ap: 15, cap: 26, imgPath: './assets/images/h_chewbacca.png', id: "chewbacca" }, { name: "Leia", hp: 90, ap: 25, cap: 18, imgPath: './assets/images/h_leia.png', id: "leia" }, { name: "Luke", hp: 130, ap: 25, cap: 25, imgPath: './assets/images/h_luke.png', id: "luke" }, { name: "Obi-Wan", hp: 90, ap: 25, cap: 23, imgPath: './assets/images/h_obiwan.png', id: "obi-wan" }, { name: "Wicket", hp: 110, ap: 20, cap: 18, imgPath: './assets/images/h_wicket.png', id: "wicket" }, { name: "Yoda", hp: 90, ap: 30, cap: 30, imgPath: './assets/images/h_yoda.png', id: "yoda" }, { name: "4-Lom", hp: 100, ap: 18, cap: 18, imgPath: './assets/images/e_4_lom.png', id: "4-lom" }, { name: "Boba-Fett", hp: 115, ap: 24, cap: 22, imgPath: './assets/images/e_boba_fett.png', id: "boba-fett" }, { name: "Darth Vader", hp: 135, ap: 20, cap: 30, imgPath: './assets/images/e_darth_vader.png', id: "darth-vader" }, { name: "Emperor", hp: 130, ap: 25, cap: 20, imgPath: './assets/images/e_emperor.png', id: "emperor" }, { name: "IG-88", hp: 100, ap: 18, cap: 16, imgPath: './assets/images/e_ig_88.png', id: "ig-88" }, { name: "Jabba", hp: 150, ap: 12, cap: 15, imgPath: './assets/images/e_jabba.png', id: "jabba" }, { name: "Greedo", hp: 85, ap: 10, cap: 10, imgPath: './assets/images/e_greedo.png', id: "greedo" }, { name: "Tuskan Raider", hp: 100, ap: 18, cap: 18, imgPath: './assets/images/e_tuskan_raider.png', id: "tuskan-raider" }, { name: "Storm Trooper", hp: 80, ap: 12, cap: 18, imgPath: './assets/images/e_storm_trooper.png', id: "storm-trooper" }];
+    var charArray = [{ name: "Chewbacca", hp: 200, ap: 15, cap: 26, imgPath: './assets/images/h_chewbacca.png', id: "chewbacca" }, { name: "Leia", hp: 90, ap: 20, cap: 18, imgPath: './assets/images/h_leia.png', id: "leia" }, { name: "Luke", hp: 130, ap: 17, cap: 25, imgPath: './assets/images/h_luke.png', id: "luke" }, { name: "Obi-Wan", hp: 90, ap: 18, cap: 23, imgPath: './assets/images/h_obiwan.png', id: "obi-wan" }, { name: "Wicket", hp: 110, ap: 20, cap: 18, imgPath: './assets/images/h_wicket.png', id: "wicket" }, { name: "Yoda", hp: 90, ap: 30, cap: 30, imgPath: './assets/images/h_yoda.png', id: "yoda" }, { name: "4-Lom", hp: 100, ap: 18, cap: 18, imgPath: './assets/images/e_4_lom.png', id: "4-lom" }, { name: "Boba-Fett", hp: 115, ap: 24, cap: 22, imgPath: './assets/images/e_boba_fett.png', id: "boba-fett" }, { name: "Darth Vader", hp: 135, ap: 20, cap: 30, imgPath: './assets/images/e_darth_vader.png', id: "darth-vader" }, { name: "Emperor", hp: 130, ap: 25, cap: 20, imgPath: './assets/images/e_emperor.png', id: "emperor" }, { name: "IG-88", hp: 100, ap: 18, cap: 16, imgPath: './assets/images/e_ig_88.png', id: "ig-88" }, { name: "Jabba", hp: 150, ap: 12, cap: 15, imgPath: './assets/images/e_jabba.png', id: "jabba" }, { name: "Greedo", hp: 85, ap: 10, cap: 10, imgPath: './assets/images/e_greedo.png', id: "greedo" }, { name: "Tuskan Raider", hp: 100, ap: 18, cap: 18, imgPath: './assets/images/e_tuskan_raider.png', id: "tuskan-raider" }, { name: "Storm Trooper", hp: 80, ap: 12, cap: 18, imgPath: './assets/images/e_storm_trooper.png', id: "storm-trooper" }];
 
     var fighters = [];
     var nonPlayers = [];
@@ -94,6 +94,9 @@ $(document).ready(function (){
         }
     });
 
+
+
+
     //attack button
     $("#btn-attack").on("click", function () {
 
@@ -112,19 +115,42 @@ $(document).ready(function (){
             defeated.push((enemy));
             enemy = null;
             if(defeated.length < 3){
+                $('#btn-attack').css("visibility", "hidden");
                 $('#enemy-character-text').text('Choose Your Enemy');
             } else {
+                $('#btn-attack').css("visibility", "hidden");
                 $('#enemy-character-text').text('You Win!');
+                $('#btn-reset').css("visibility", "visible");
             }
             
-        } else if (enemyHP > 0 && playerHP > 0) {
+        };
+        
+        if (enemyHP > 0 && playerHP > 0) {
             playerHP = playerHP - enemyCAP;
             playerAP = playerAP + playerBaseAP;
-            $('#hp-' + fighters[enemyIndex].name).text(enemyHP);
-            $('#hp-' + fighters[playerIndex].name).text(playerHP);
-        } else if (playerHP <= 0) {
+            $('#hp-' + fighters[enemyIndex].id).text(enemyHP);  // name
+            $('#hp-' + fighters[playerIndex].id).text(playerHP); // name
+            $('#text-enemy-stats').text(`${enemyName} hits ${playerName} for ${enemyCAP} damage.`);
+            if(playerHP <= 0) {
+                console.log("Player Loses!");
+                $('#enemy-character-text').text('You Lose!');
+                $('#hp-' + fighters[playerIndex].id).text("0");
+                //when defeated move back to enemies area, label as "DEFEATED, and cannot be selected again."
+                $('#' + player).find($("#name-" + player).text("DEFEATED"));
+                $('#' + player).find($("#name-" + player).css("color", "red"));
+                $('#btn-attack').css("visibility", "hidden");
+                $('#btn-reset').css("visibility", "visible");
+            };
+        } else if (playerHP <= 0 ) {
             console.log("Player Loses!");
+            $('#enemy-character-text').text('You Lose!');
+            $('#btn-reset').css("visibility", "visible");
         };
+    });
+
+    //reset button
+    $("#btn-reset").on("click", function () {
+        location.reload();
     });
 
 });
