@@ -29,7 +29,7 @@ $(document).ready(function (){
     for (var i = 0; i < 4; i++) {
         var randomNumber = Math.floor(Math.random() * charArray.length);
         fighters.push(charArray[randomNumber]);
-        $('#hp-' + fighters[i].id).text(fighters[i].hp); //name
+        $('#hp-' + fighters[i].id).text(fighters[i].hp); 
         charArray.splice(randomNumber, 1);
     };
 
@@ -40,8 +40,6 @@ $(document).ready(function (){
         $('#' + charArray[i].id).detach();        
     };
 
-    console.log(fighters);
-
     // click a card to choose your player, and it assigns needed player variables. 
     $(".card-fighter").on("click", function () {
 
@@ -49,12 +47,11 @@ $(document).ready(function (){
             
             player = $(this).attr('id');
             $("#area-player").prepend($(this));
-            //console.log("Player is: " + player);
+
             for (let i = 0; i < fighters.length; i++) {
-                if(fighters[i].id === player){          //name
+                if(fighters[i].id === player){         
                     playerIndex = i;
                     playerName = fighters[playerIndex].name;
-                    console.log("playerName variable is set to " + playerName);
                     playerHP = fighters[playerIndex].hp;
                     playerAP = fighters[playerIndex].ap;
                     playerBaseAP = playerAP;
@@ -71,10 +68,9 @@ $(document).ready(function (){
             // needed enemy variables are assigned
             enemy = $(this).attr('id');
             if(defeated.indexOf(enemy) === -1){
-                console.log("Enemy is: " + enemy);
                 $("#area-enemy").append($(this));
                 for (let i = 0; i < fighters.length; i++) {
-                    if (fighters[i].id === enemy) {    //name
+                    if (fighters[i].id === enemy) {    
                         enemyIndex = i;
                         enemyName = fighters[enemyIndex].name;
                         enemyHP = fighters[enemyIndex].hp;
@@ -86,12 +82,9 @@ $(document).ready(function (){
             $('#btn-attack').css("visibility", "visible");
             $('#enemy-character-text').text('Enemy Character');
             } else {
-                console.log("Enemy is defeated.  Choose another.");
                 enemy = null;
             }
-        } else {
-            console.log("Nothing Happens ");            
-        }
+        } ;
     });
 
 
@@ -102,11 +95,9 @@ $(document).ready(function (){
 
         // update stats based on attacking
         enemyHP = enemyHP - playerAP;
-        console.log(player);
         $('#text-player-stats').text(`${playerName} hits ${enemyName} for ${playerAP} damage.`);
 
         if (enemyHP <= 0 && playerHP > 0) {
-            console.log("Enemy Loses!");
             $('#hp-' + fighters[enemyIndex].id).text("0");
             //when defeated move back to enemies area, label as "DEFEATED, and cannot be selected again."
             $('.card-deck').append($('#' + enemy));
@@ -128,11 +119,10 @@ $(document).ready(function (){
         if (enemyHP > 0 && playerHP > 0) {
             playerHP = playerHP - enemyCAP;
             playerAP = playerAP + playerBaseAP;
-            $('#hp-' + fighters[enemyIndex].id).text(enemyHP);  // name
-            $('#hp-' + fighters[playerIndex].id).text(playerHP); // name
+            $('#hp-' + fighters[enemyIndex].id).text(enemyHP);  
+            $('#hp-' + fighters[playerIndex].id).text(playerHP); 
             $('#text-enemy-stats').text(`${enemyName} hits ${playerName} for ${enemyCAP} damage.`);
             if(playerHP <= 0) {
-                console.log("Player Loses!");
                 $('#enemy-character-text').text('You Lose!');
                 $('#hp-' + fighters[playerIndex].id).text("0");
                 //when defeated move back to enemies area, label as "DEFEATED, and cannot be selected again."
@@ -142,7 +132,6 @@ $(document).ready(function (){
                 $('#btn-reset').css("visibility", "visible");
             };
         } else if (playerHP <= 0 ) {
-            console.log("Player Loses!");
             $('#enemy-character-text').text('You Lose!');
             $('#btn-reset').css("visibility", "visible");
         };
